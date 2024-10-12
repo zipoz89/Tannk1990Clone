@@ -12,6 +12,9 @@
 		},
 		{
 			"Type" : "ProjectileComponent"
+		},
+		{
+			"Type" : "PoolableComponent"
 		}
 	]
 }

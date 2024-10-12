@@ -5,8 +5,8 @@
 #include "TextureComponent.h"
 #include "Entity.h"
 #include "Engine.h"
+#include <algorithm> 
 #include "ProjectileComponent.h"
-#include "ResourceManager.h"
 #include "Scene.h"
 
 PlayerInputComponent::PlayerInputComponent(Entity* Owner)
@@ -23,16 +23,23 @@ PlayerInputComponent::PlayerInputComponent()
 void PlayerInputComponent::Initialize()
 {
 	m_TextureComponent = GetOwner()->GetComponent<TextureComponent>();
+	m_FireCooldown = 0;
+	m_FireRate = 1.5;
+	m_Speed = 300;
 }
 
 void PlayerInputComponent::Update(float DeltaTime)
 {
-	const int Speed = 300;
 	SDL_Rect& Rectangle = m_TextureComponent->GetRectangle();
 
 	SDL_Rect OldPosition = Rectangle;  // Store previous position
 
 	std::vector<SDL_Event> Events = Engine::Get()->GetEvents();
+
+	if(m_FireCooldown > 0)
+	{
+		m_FireCooldown = std::max(.0f, m_FireCooldown - DeltaTime);
+	}
 
 	for (const SDL_Event& Event : Events)
 	{
@@ -45,22 +52,22 @@ void PlayerInputComponent::Update(float DeltaTime)
 			case SDL_SCANCODE_W:
 			case SDL_SCANCODE_UP:
 				m_CurrentDirection = UP;
-				Rectangle.y -= Speed * DeltaTime;
+				Rectangle.y -= m_Speed * DeltaTime;
 				break;
 			case SDL_SCANCODE_A:
 			case SDL_SCANCODE_LEFT:
 				m_CurrentDirection = LEFT;
-				Rectangle.x -= Speed * DeltaTime;
+				Rectangle.x -= m_Speed * DeltaTime;
 				break;
 			case SDL_SCANCODE_S:
 			case SDL_SCANCODE_DOWN:
 				m_CurrentDirection = DOWN;
-				Rectangle.y += Speed * DeltaTime;
+				Rectangle.y += m_Speed * DeltaTime;
 				break;
 			case SDL_SCANCODE_D:
 			case SDL_SCANCODE_RIGHT:
 				m_CurrentDirection = RIGHT;
-				Rectangle.x += Speed * DeltaTime;
+				Rectangle.x += m_Speed * DeltaTime;
 				break;
 			case SDL_SCANCODE_SPACE:
 				Shoot();
@@ -133,8 +140,15 @@ void PlayerInputComponent::Update(float DeltaTime)
 
 void PlayerInputComponent::Shoot()
 {
+	if(m_FireCooldown > 0)
+	{
+		return;
+	}
 
-	Entity* projectile = Engine::Get()->GetActiveScene()->SpawnEntityFromTemplate("Projectile", 0,0,10,10);
+	m_FireCooldown = 1 / m_FireRate;
+
+
+	Entity* projectile = Engine::Get()->GetActiveScene()->GetEntityFromPool("Projectile")->GetOwner();
 	ProjectileComponent* projComp = projectile->GetComponent<ProjectileComponent>();
 
 	TextureComponent* TextureComponentPtr = projectile->GetComponent<TextureComponent>();

@@ -27,6 +27,8 @@ public:
 
 private:
 	TextureComponent* m_TextureComponent;
-
 	Direction m_CurrentDirection = UP;
+	float m_FireRate;
+	float m_Speed;
+	float m_FireCooldown;
 };

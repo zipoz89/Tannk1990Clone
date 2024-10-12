@@ -6,6 +6,7 @@
 #include "ColliderComponent.h"
 #include "DestroyableComponent.h"
 #include "ProjectileComponent.h"
+#include "Scene.h"
 
 int main(int argc, char* argv[])
 {
@@ -18,8 +19,10 @@ int main(int argc, char* argv[])
 	ResourceManagerPtr->RegisterComponent("CollideeComponent", new CollideeComponent());
 	ResourceManagerPtr->RegisterComponent("ProjectileComponent", new ProjectileComponent());
 	ResourceManagerPtr->RegisterComponent("DestroyableComponent", new DestroyableComponent());
+	ResourceManagerPtr->RegisterComponent("PoolableComponent", new PoolableComponent());
 
 	Engine::Get()->CreateActiveSceneFromTemplate("MainScene");
+	Engine::Get()->GetActiveScene()->AddPool("Projectile", 10);
 
 	Engine::Get()->MainLoop();
 	Engine::Get()->ShutDown();

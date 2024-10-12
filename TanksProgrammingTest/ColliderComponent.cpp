@@ -23,7 +23,7 @@ void ColliderComponent::Initialize()
     {
         m_Collider = TextureComp->GetRectangle();  // Initialize based on the texture
 
-        std::cout << "setting collider" << m_Collider.w << " " << m_Collider.h << "\n";
+        //std::cout << "setting collider" << m_Collider.w << " " << m_Collider.h << "\n";
     }
 }
 

@@ -22,6 +22,8 @@
     <ClCompile Include="CollideeComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="DestroyableComponent.cpp" />
+    <ClCompile Include="PoolableComponent.cpp" />
+    <ClCompile Include="PoolManager.cpp" />
     <ClCompile Include="ProjectileComponent.cpp" />
     <ClCompile Include="Sources\Engine\Engine.cpp" />
     <ClCompile Include="Sources\Engine\Entity.cpp" />
@@ -36,6 +38,8 @@
     <ClInclude Include="CollideeComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="DestroyableComponent.h" />
+    <ClInclude Include="PoolableComponent.h" />
+    <ClInclude Include="PoolManager.h" />
     <ClInclude Include="ProjectileComponent.h" />
     <ClInclude Include="Sources\Engine\Engine.h" />
     <ClInclude Include="Sources\Engine\Entity.h" />

@@ -54,7 +54,11 @@ void Scene::Update(float DeltaTime)
 	{
 		Entity->Update(DeltaTime);
 	}
+
+	HandleEntityDestruction();
 }
+
+
 
 void Scene::Draw()
 {
@@ -81,6 +85,8 @@ void Scene::RemoveEntity(Entity* Entity)
 {
 	auto RetIt = std::remove(m_Entities.begin(), m_Entities.end(), Entity);
 }
+
+
 
 void Scene::LoadSceneFromLayout(nlohmann::json Content, nlohmann::json Legend)
 {
@@ -138,6 +144,54 @@ Entity* Scene::SpawnEntityFromTemplate(const std::string& TemplateName, int X, i
 		return NewEntity;
 	}
 
+
+
 	return nullptr;
 }
 
+void Scene::DestroyEntity(Entity* entity)
+{
+	m_EntitiesToDestroy.push_back(entity);  // Mark entity for destruction
+}
+
+void Scene::HandleEntityDestruction()
+{
+
+	// After updating, destroy marked entities
+	for (Entity* entityToDestroy : m_EntitiesToDestroy)
+	{
+		auto it = std::find(m_Entities.begin(), m_Entities.end(), entityToDestroy);
+		if (it != m_Entities.end())
+		{
+			m_Entities.erase(it);  // Remove the entity from the scene
+			entityToDestroy->UnInitialize();
+			delete entityToDestroy;  // Free memory
+		}
+	}
+
+	m_EntitiesToDestroy.clear();  // Clear the destruction list after processing
+}
+
+PoolableComponent* Scene::GetEntityFromPool(const std::string& type)
+{
+	auto it = m_PoolManagers.find(type);
+	if (it != m_PoolManagers.end())
+	{
+		return it->second->GetEntity();
+	}
+	return nullptr;
+}
+
+void Scene::ReturnEntityToPool(const std::string& type, PoolableComponent* entity)
+{
+	auto it = m_PoolManagers.find(type);
+	if (it != m_PoolManagers.end())
+	{
+		it->second->ReturnEntity(entity);
+	}
+}
+
+void Scene::AddPool(const char* objectTemplate, int initialSize)
+{
+	m_PoolManagers[objectTemplate] = new PoolManager(objectTemplate, initialSize);
+}

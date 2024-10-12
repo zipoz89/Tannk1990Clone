@@ -29,6 +29,11 @@ void ProjectileComponent::Initialize()
 
 void ProjectileComponent::Update(float DeltaTime)
 {
+    if(!GetOwner()->GetComponent<PoolableComponent>()->IsActive())
+    {
+        return;
+    }
+
     SDL_Rect& Rectangle = m_TextureComponent->GetRectangle();
 
 
@@ -56,7 +61,7 @@ void ProjectileComponent::Update(float DeltaTime)
             continue;
 
         ColliderComponent* Collider = ColliderEntity->GetComponent<ColliderComponent>();
-        if (Collider && IsColliding(Collider->GetCollider())) {
+        if (Collider && Collider->IsColliding(Rectangle)) {
             if (ColliderEntity->GetComponent<DestroyableComponent>()) {
                 //ColliderEntity->Destroy();  // Destroy the wall
                 std::cout << "Hit something destructable";
@@ -65,7 +70,8 @@ void ProjectileComponent::Update(float DeltaTime)
             {
                 std::cout << "Hit something indestructable";
             }
-            //Destroy();  // Destroy the projectile
+            
+            Destroy();  // Destroy the projectile
             break;
         }
     }

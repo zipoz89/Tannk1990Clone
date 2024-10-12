@@ -2,6 +2,7 @@
 #include "EntityComponent.h"
 #include "Engine.h"
 #include "ResourceManager.h"
+#include "Scene.h"
 
 void Entity::LoadFromConfig(nlohmann::json Config)
 {
@@ -64,4 +65,9 @@ void Entity::AddComponent(EntityComponent* Component)
 void Entity::RemoveComponent(EntityComponent* Component)
 {
 	auto RetIt = std::remove(m_Components.begin(), m_Components.end(), Component);
+}
+
+void EntityComponent::Destroy()
+{
+	Engine::Get()->GetActiveScene()->DestroyEntity(GetOwner());
 }

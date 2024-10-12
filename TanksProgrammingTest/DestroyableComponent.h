@@ -8,7 +8,4 @@ public:
     DestroyableComponent() : EntityComponent(nullptr) {}
 
     virtual EntityComponent* Clone() const override { return new DestroyableComponent(*this); }
-
-    virtual void Initialize() override {}
-    virtual void Update(float DeltaTime) override {}
 };
