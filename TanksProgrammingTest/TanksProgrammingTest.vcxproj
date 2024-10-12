@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="CollideeComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
-    <ClCompile Include="DestroyableComponent.cpp" />
     <ClCompile Include="PoolableComponent.cpp" />
     <ClCompile Include="PoolManager.cpp" />
     <ClCompile Include="ProjectileComponent.cpp" />
@@ -33,11 +32,13 @@
     <ClCompile Include="Sources\Engine\TextureComponent.cpp" />
     <ClCompile Include="Sources\Game\Main.cpp" />
     <ClCompile Include="Sources\Game\PlayerInputComponent.cpp" />
+    <ClCompile Include="TankControllerComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CollideeComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="DestroyableComponent.h" />
+    <ClInclude Include="Float2.h" />
     <ClInclude Include="PoolableComponent.h" />
     <ClInclude Include="PoolManager.h" />
     <ClInclude Include="ProjectileComponent.h" />
@@ -49,6 +50,7 @@
     <ClInclude Include="Sources\Engine\TextureComponent.h" />
     <ClInclude Include="Sources\Engine\EngineUtils.h" />
     <ClInclude Include="Sources\Game\PlayerInputComponent.h" />
+    <ClInclude Include="TankControllerComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -1,0 +1,25 @@
+{
+	"Name" : "Player2",
+	"Components" : 
+	[
+		{
+			"Type" : "TextureComponent",
+			"Texture" : "BlueTankFront.png",
+			"Width" : 50,
+			"Height" : 50,
+			"PositionX" : 600,
+			"PositionY" : 470
+		},
+		{
+			"Type" : "TankControllerComponent"
+		},
+		{
+			"Type" : "PlayerInputComponent",
+			"UpKey" : 82,
+			"DownKey" : 81,
+			"LeftKey" : 80,
+			"RightKey" : 79,
+			"ShootKey" : 40
+		}
+	]
+}

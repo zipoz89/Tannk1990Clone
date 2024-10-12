@@ -2,15 +2,12 @@
 
 #include "ColliderComponent.h"
 #include "EntityComponent.h"
+#include "Float2.h"
+#include "TankControllerComponent.h"
 
 class TextureComponent;
 
-enum Direction {
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
-};
+
 
 class PlayerInputComponent : public ColliderComponent
 {
@@ -21,14 +18,21 @@ public:
 
 	virtual EntityComponent* Clone() const override { return new PlayerInputComponent(*this); }
 
-	virtual void Initialize() override;
+	virtual void LoadFromConfig(nlohmann::json Config) override;
 	virtual void Update(float DeltaTime) override;
-	void Shoot();
+
+	Float2 GetDirection() { return directionInput; }
+	bool GetShooting() { return isShooting; }
 
 private:
-	TextureComponent* m_TextureComponent;
-	Direction m_CurrentDirection = UP;
-	float m_FireRate;
-	float m_Speed;
-	float m_FireCooldown;
+	std::list<Direction> m_DirectionInputBuffer;
+
+	int upKey;
+	int downKey;
+	int leftKey;
+	int rightKey;
+	int shootKey;
+
+	Float2 directionInput;
+	bool isShooting;
 };

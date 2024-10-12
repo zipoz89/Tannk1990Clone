@@ -12,6 +12,8 @@ public:
     virtual EntityComponent* Clone() const override { return new ProjectileComponent(*this); }
 
     virtual void Initialize() override;
+    void HandleMovement(float DeltaTime) const;
+    void HandleCollision();
     virtual void Update(float DeltaTime) override;
 
     void SetDirection(Direction direction);

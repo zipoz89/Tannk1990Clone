@@ -27,6 +27,8 @@ void ProjectileComponent::Initialize()
 }
 
 
+
+
 void ProjectileComponent::Update(float DeltaTime)
 {
     if(!GetOwner()->GetComponent<PoolableComponent>()->IsActive())
@@ -34,47 +36,55 @@ void ProjectileComponent::Update(float DeltaTime)
         return;
     }
 
-    SDL_Rect& Rectangle = m_TextureComponent->GetRectangle();
+    HandleMovement(DeltaTime);
+    HandleCollision();
+}
 
+void ProjectileComponent::HandleMovement(float DeltaTime) const
+{
+	SDL_Rect& Rectangle = m_TextureComponent->GetRectangle();
 
-    // Move the projectile based on its direction
-    switch (m_Direction) {
-    case UP:
-        Rectangle.y -= m_Speed * DeltaTime;
-        break;
-    case DOWN:
-        Rectangle.y += m_Speed * DeltaTime;
-        break;
-    case LEFT:
-        Rectangle.x -= m_Speed * DeltaTime;
-        break;
-    case RIGHT:
-        Rectangle.x += m_Speed * DeltaTime;
-        break;
-    }
+	switch (m_Direction) {
+	case UP:
+		Rectangle.y -= m_Speed * DeltaTime;
+		break;
+	case DOWN:
+		Rectangle.y += m_Speed * DeltaTime;
+		break;
+	case LEFT:
+		Rectangle.x -= m_Speed * DeltaTime;
+		break;
+	case RIGHT:
+		Rectangle.x += m_Speed * DeltaTime;
+		break;
+	}
+}
 
-    // Collision detection with walls
-    std::vector<Entity*> Entities = Engine::Get()->GetActiveScene()->GetEntitiesWithComponent<ColliderComponent>();
+void ProjectileComponent::HandleCollision()
+{
+	SDL_Rect& Rectangle = m_TextureComponent->GetRectangle();
 
-    for (Entity* ColliderEntity : Entities) {
-        if (ColliderEntity == GetOwner())
-            continue;
+	std::vector<Entity*> Entities = Engine::Get()->GetActiveScene()->GetEntitiesWithComponent<ColliderComponent>();
 
-        ColliderComponent* Collider = ColliderEntity->GetComponent<ColliderComponent>();
-        if (Collider && Collider->IsColliding(Rectangle)) {
-            if (ColliderEntity->GetComponent<DestroyableComponent>()) {
-                ColliderEntity->Destroy();  // Destroy the wall
-                //std::cout << "Hit something destructable";
-            }
-            else
-            {
-                //std::cout << "Hit something indestructable";
-            }
-            
-            Engine::Get()->GetActiveScene()->ReturnEntityToPool("Projectile", GetOwner()->GetComponent<PoolableComponent>());
-            break;
-        }
-    }
+	for (Entity* ColliderEntity : Entities) {
+		if (ColliderEntity == GetOwner())
+			continue;
+
+		ColliderComponent* Collider = ColliderEntity->GetComponent<ColliderComponent>();
+		if (Collider && Collider->IsColliding(Rectangle)) {
+			if (ColliderEntity->GetComponent<DestroyableComponent>()) {
+				ColliderEntity->Destroy();  // Destroy the wall
+				//std::cout << "Hit something destructable";
+			}
+			else
+			{
+				//std::cout << "Hit something indestructable";
+			}
+
+			Engine::Get()->GetActiveScene()->ReturnEntityToPool("Projectile", GetOwner()->GetComponent<PoolableComponent>());
+			break;
+		}
+	}
 }
 
 void ProjectileComponent::SetDirection(Direction direction)

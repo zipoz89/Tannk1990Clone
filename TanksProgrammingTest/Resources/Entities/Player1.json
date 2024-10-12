@@ -1,0 +1,25 @@
+{
+	"Name" : "Player1",
+	"Components" : 
+	[
+		{
+			"Type" : "TextureComponent",
+			"Texture" : "RedTankFront.png",
+			"Width" : 50,
+			"Height" : 50,
+			"PositionX" : 300,
+			"PositionY" : 470
+		},
+		{
+			"Type" : "TankControllerComponent"
+		},
+		{
+			"Type" : "PlayerInputComponent",
+			"UpKey" : 26,
+			"DownKey" : 22,
+			"LeftKey" : 4,
+			"RightKey" : 7,
+			"ShootKey" : 44
+		}
+	]
+}

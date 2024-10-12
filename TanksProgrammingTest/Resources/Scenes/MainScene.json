@@ -3,7 +3,10 @@
 	"Entities" : 
 	[
 		{
-			"Type" : "Player"
+			"Type" : "Player1"
+		},
+		{
+			"Type" : "Player2"
 		}
 	],
 	"SceneLayout" : 

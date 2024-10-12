@@ -7,6 +7,7 @@
 #include "DestroyableComponent.h"
 #include "ProjectileComponent.h"
 #include "Scene.h"
+#include "TankControllerComponent.h"
 
 int main(int argc, char* argv[])
 {
@@ -14,6 +15,7 @@ int main(int argc, char* argv[])
 
 	ResourceManager* ResourceManagerPtr = Engine::Get()->GetResourceManager();
 	ResourceManagerPtr->RegisterComponent("PlayerInputComponent", new PlayerInputComponent());
+	ResourceManagerPtr->RegisterComponent("TankControllerComponent", new TankControllerComponent());
 	ResourceManagerPtr->RegisterComponent("TextureComponent", new TextureComponent());
 	ResourceManagerPtr->RegisterComponent("ColliderComponent", new ColliderComponent());
 	ResourceManagerPtr->RegisterComponent("CollideeComponent", new CollideeComponent());
