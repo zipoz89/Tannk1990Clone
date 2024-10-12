@@ -11,7 +11,6 @@ PoolManager::PoolManager(const char* object_template, int initial_size)
 
     for (int i = 0; i < initial_size; ++i)
     {
-	    std::cout << m_PoolTemplate;
         PoolableComponent* newObject = Engine::Get()->GetActiveScene()->SpawnEntityFromTemplate(m_PoolTemplate, 0, 0, 10, 10)->GetComponent<PoolableComponent>();
         newObject->OnReturnedToPool();  // Mark objects as inactive
         m_Pool.push(newObject);

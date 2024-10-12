@@ -22,10 +22,12 @@ public:
 	void SetScale(int w, int h);
 	void SetRotation(float angle);
 	SDL_Rect& GetRectangle() { return m_Rectangle; }
+	void SetVisible(bool visible) { m_isVisible = visible; }
 
 private:
 	std::string TexturePath;
 	SDL_Rect m_Rectangle;
 	SDL_Texture* m_Texture;
-	float _angle;
+	float m_angle;
+	bool m_isVisible;
 };

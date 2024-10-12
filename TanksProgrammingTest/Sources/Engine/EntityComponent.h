@@ -21,7 +21,7 @@ public:
 
 	void SetOwner(Entity* Owner) { m_Owner = Owner; }
 	Entity* GetOwner() { return m_Owner; }
-	void Destroy();
+
 
 private:
 	Entity* m_Owner;

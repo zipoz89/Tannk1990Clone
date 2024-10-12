@@ -12,6 +12,9 @@
 		},
 		{
 			"Type" : "ColliderComponent"
+		},
+		{
+			"Type" : "DestroyableComponent"
 		}
 	]
 }

@@ -4,6 +4,7 @@
 TextureComponent::TextureComponent(Entity* Owner)
 	: EntityComponent(Owner)
 	, m_Rectangle{ 0,0,0,0 }
+	, m_isVisible(true)
 {
 }
 
@@ -37,8 +38,8 @@ void TextureComponent::UnInitialize()
 
 void TextureComponent::Draw()
 {
-	if (m_Texture) {
-		SDL_RenderCopyEx(Engine::Get()->GetRenderer(), m_Texture, nullptr, &m_Rectangle, _angle, nullptr, SDL_FLIP_NONE);
+	if (m_isVisible && m_Texture) {
+		SDL_RenderCopyEx(Engine::Get()->GetRenderer(), m_Texture, nullptr, &m_Rectangle, m_angle, nullptr, SDL_FLIP_NONE);
 	}
 
 }
@@ -75,5 +76,5 @@ void TextureComponent::SetScale(int w, int h)
 
 void TextureComponent::SetRotation(float angle)
 {
-	_angle = angle;
+	m_angle = angle;
 }

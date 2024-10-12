@@ -67,7 +67,7 @@ void Entity::RemoveComponent(EntityComponent* Component)
 	auto RetIt = std::remove(m_Components.begin(), m_Components.end(), Component);
 }
 
-void EntityComponent::Destroy()
+void Entity::Destroy()
 {
-	Engine::Get()->GetActiveScene()->DestroyEntity(GetOwner());
+	Engine::Get()->GetActiveScene()->DestroyEntity(this);
 }

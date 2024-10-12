@@ -17,6 +17,7 @@ public:
 
 	void AddComponent(EntityComponent* Component);
 	void RemoveComponent(EntityComponent* Component);
+	void Destroy();
 
 	template <typename ComponentType>
 	ComponentType* GetComponent()

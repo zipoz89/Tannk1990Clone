@@ -63,15 +63,15 @@ void ProjectileComponent::Update(float DeltaTime)
         ColliderComponent* Collider = ColliderEntity->GetComponent<ColliderComponent>();
         if (Collider && Collider->IsColliding(Rectangle)) {
             if (ColliderEntity->GetComponent<DestroyableComponent>()) {
-                //ColliderEntity->Destroy();  // Destroy the wall
-                std::cout << "Hit something destructable";
+                ColliderEntity->Destroy();  // Destroy the wall
+                //std::cout << "Hit something destructable";
             }
             else
             {
-                std::cout << "Hit something indestructable";
+                //std::cout << "Hit something indestructable";
             }
             
-            Destroy();  // Destroy the projectile
+            Engine::Get()->GetActiveScene()->ReturnEntityToPool("Projectile", GetOwner()->GetComponent<PoolableComponent>());
             break;
         }
     }

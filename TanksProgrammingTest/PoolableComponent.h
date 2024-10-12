@@ -10,8 +10,8 @@ public:
     virtual EntityComponent* Clone() const override { return new PoolableComponent(*this); }
 
     bool IsActive() const { return m_IsActive; }
-    void OnReturnedToPool() { m_IsActive = false; }
-    void OnGetToPool() { m_IsActive = true; }
+    void OnReturnedToPool();
+    void OnGetToPool();
 
 protected:
     bool m_IsActive;
