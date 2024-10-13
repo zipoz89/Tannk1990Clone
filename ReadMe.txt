@@ -1,3 +1,13 @@
+Controlls:
+    Player 1
+        movement: WSAD
+        shooting Space
+    Player 2
+        movement: Arrow Keys
+        shooting Enter
+
+
+
 First of all, I need to address that all my professional experience was in c# in Unity but I used to program in c++ before and throughout my collage so I might have used some bad practices,
 though I consider myself a quick learner, so adjusting to standards used in the company should be easy.
 
