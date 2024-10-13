@@ -8,10 +8,9 @@
 class TextureComponent;
 
 
-
-class PlayerInputComponent : public ColliderComponent
+//this class can be generalized to be used as strategy pattern and made so that tank will be controlled by ai
+class PlayerInputComponent : public EntityComponent
 {
-
 public:
 	PlayerInputComponent(Entity* Owner);
 	PlayerInputComponent();
@@ -21,18 +20,18 @@ public:
 	virtual void LoadFromConfig(nlohmann::json Config) override;
 	virtual void Update(float DeltaTime) override;
 
-	Float2 GetDirection() { return directionInput; }
-	bool GetShooting() { return isShooting; }
+	Float2 GetDirection() { return m_DirectionInput; }
+	bool GetShooting() { return m_IsShooting; }
 
 private:
 	std::list<Direction> m_DirectionInputBuffer;
 
-	int upKey;
-	int downKey;
-	int leftKey;
-	int rightKey;
-	int shootKey;
+	int m_UpKey;
+	int m_DownKey;
+	int m_LeftKey;
+	int m_RightKey;
+	int m_ShootKey;
 
-	Float2 directionInput;
-	bool isShooting;
+	Float2 m_DirectionInput;
+	bool m_IsShooting;
 };

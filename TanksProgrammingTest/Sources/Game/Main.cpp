@@ -12,10 +12,8 @@
 #include "Scene.h"
 #include "TankControllerComponent.h"
 
-int main(int argc, char* argv[])
+void RegisterResources()
 {
-	Engine::Get()->Initialize(std::make_unique<EmptyState>());
-
 	ResourceManager* ResourceManagerPtr = Engine::Get()->GetResourceManager();
 	ResourceManagerPtr->RegisterComponent("PlayerInputComponent", new PlayerInputComponent());
 	ResourceManagerPtr->RegisterComponent("TankControllerComponent", new TankControllerComponent());
@@ -26,6 +24,13 @@ int main(int argc, char* argv[])
 	ResourceManagerPtr->RegisterComponent("DestroyableComponent", new DestroyableComponent());
 	ResourceManagerPtr->RegisterComponent("PoolableComponent", new PoolableComponent());
 	ResourceManagerPtr->RegisterComponent("EndScreen", new EndScreen());
+}
+
+int main(int argc, char* argv[])
+{
+	Engine::Get()->Initialize(std::make_unique<EmptyState>());
+
+	RegisterResources();
 
 	Engine::Get()->SetGameState(std::make_unique<PlayingState>());
 

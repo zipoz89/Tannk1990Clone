@@ -9,11 +9,11 @@
 
 void GameOverState::Initialize()
 {
-
 	std::vector<Entity*> Entities = Engine::Get()->GetActiveScene()->GetEntitiesWithComponent<TankControllerComponent>();
 
 	int killedTanks = 0;
 
+	//check if draw
 	for (Entity* tank : Entities)
 	{
 		TankControllerComponent* tankComponent = tank->GetComponent<TankControllerComponent>();

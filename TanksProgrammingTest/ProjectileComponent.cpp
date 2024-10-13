@@ -11,7 +11,6 @@
 
 ProjectileComponent::ProjectileComponent(Entity* Owner)
     : ColliderComponent(Owner)
-    , m_Speed(400.0f)  // Default speed
     , m_TextureComponent(nullptr)
 {
 }
@@ -21,13 +20,15 @@ ProjectileComponent::ProjectileComponent()
 {
 }
 
+void ProjectileComponent::LoadFromConfig(nlohmann::json Config)
+{
+	m_Speed = Config.value("Speed", 400);
+}
+
 void ProjectileComponent::Initialize()
 {
     m_TextureComponent = GetOwner()->GetComponent<TextureComponent>();
 }
-
-
-
 
 void ProjectileComponent::Update(float DeltaTime)
 {
@@ -66,12 +67,12 @@ void ProjectileComponent::HandleCollision()
 
 	std::vector<Entity*> Entities = Engine::Get()->GetActiveScene()->GetEntitiesWithComponent<ColliderComponent>();
 
-	for (Entity* ColliderEntity : Entities) {
+	for (Entity* ColliderEntity : Entities) 
+	{
 		if (ColliderEntity == GetOwner())
 			continue;
 
 		ColliderComponent* Collider = ColliderEntity->GetComponent<ColliderComponent>();
-
 
 		if (Collider && Collider->IsColliding(Rectangle)) 
 		{
@@ -91,9 +92,9 @@ void ProjectileComponent::HandleCollision()
 		}
 	}
 
+
 	int MaxWidth = 0, MaxHeight = 0;
 	SDL_GetWindowSize(Engine::Get()->GetWindow(), &MaxWidth, &MaxHeight);
-
 
 	if (Rectangle.x + Rectangle.w > MaxWidth ||
 		Rectangle.x < 0 ||
@@ -108,9 +109,4 @@ void ProjectileComponent::HandleCollision()
 void ProjectileComponent::SetDirection(Direction direction)
 {
     m_Direction = direction;
-}
-
-void ProjectileComponent::SetSpeed(float speed)
-{
-    m_Speed = speed;
 }

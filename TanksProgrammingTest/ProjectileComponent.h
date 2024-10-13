@@ -11,19 +11,18 @@ public:
 
     virtual EntityComponent* Clone() const override { return new ProjectileComponent(*this); }
 
+    virtual void LoadFromConfig(nlohmann::json Config) override;
     virtual void Initialize() override;
-    void HandleMovement(float DeltaTime) const;
-    void HandleCollision();
     virtual void Update(float DeltaTime) override;
 
     void SetDirection(Direction direction);
-    void SetSpeed(float speed);
-    //void Destroy();
 
 private:
+    void HandleMovement(float DeltaTime) const;
+    void HandleCollision();
+
+    TextureComponent* m_TextureComponent;
     Direction m_Direction;
     float m_Speed;
-    TextureComponent* m_TextureComponent;
-
 };
 

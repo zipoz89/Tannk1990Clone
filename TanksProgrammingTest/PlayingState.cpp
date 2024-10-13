@@ -14,8 +14,6 @@ void PlayingState::Initialize()
         Engine::Get()->GetActiveScene()->UnInitialize();
     }
 
-    const Uint8* state = SDL_GetKeyboardState(NULL);
-
     Engine::Get()->CreateActiveSceneFromTemplate("MainScene");
     Engine::Get()->GetActiveScene()->AddPool("Projectile", 10, 10, 10);
 
@@ -25,7 +23,7 @@ void PlayingState::Initialize()
     }
 
 }
-
+//I check for the killed players here, ideally I would use some external manager with teams
 void PlayingState::Update(float DeltaTime)
 {
     if (Engine::Get()->GetActiveScene() != nullptr)
@@ -55,5 +53,4 @@ void PlayingState::Update(float DeltaTime)
 
 void PlayingState::Uninitialize()
 {
-    //todo
 }

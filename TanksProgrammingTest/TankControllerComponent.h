@@ -19,6 +19,7 @@ public:
 
 	virtual EntityComponent* Clone() const override { return new TankControllerComponent(*this); }
 
+	virtual void LoadFromConfig(nlohmann::json Config) override;
 	virtual void Initialize() override;
 	virtual void Update(float DeltaTime) override;
 
@@ -30,15 +31,14 @@ private:
 	void HandleMovement(float DeltaTime);
 	void HandleShooting(float DeltaTime);
 	void Shoot();
-	
 
 	TextureComponent* m_TextureComponent;
 	PlayerInputComponent* m_PlayerInputComponent;
-	Direction m_CurrentDirection = UP;
-	float m_FireRate;
-	float m_Speed;
-	float m_FireCooldown;
 
+	Direction m_CurrentDirection = UP;
+	float m_FireCooldown = 0;
+	float m_FireRate;
+	int m_Speed;
 	bool m_Killed;
 };
 

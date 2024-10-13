@@ -11,7 +11,8 @@
 			"PositionY" : 0
 		},
 		{
-			"Type" : "ProjectileComponent"
+			"Type" : "ProjectileComponent",
+			"Speed" : 800
 		},
 		{
 			"Type" : "PoolableComponent"

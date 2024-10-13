@@ -12,9 +12,8 @@ public:
 	virtual EntityComponent* Clone() const override { return new ColliderComponent(*this); }
 
 	virtual void Initialize() override;
-	//virtual void Update(float DeltaTime) override;
 	void SetColliderSize(int Width, int Height);
-	bool IsColliding(const SDL_Rect& OtherRect);
+	bool IsColliding(const SDL_Rect& OtherRect) const;
 	
 	SDL_Rect& GetCollider() { return m_Collider; }
 

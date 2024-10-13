@@ -7,11 +7,13 @@
 			"Texture" : "RedTankFront.png",
 			"Width" : 30,
 			"Height" : 30,
-			"PositionX" : 200,
-			"PositionY" : 250
+			"PositionX" : 150,
+			"PositionY" : 750
 		},
 		{
-			"Type" : "TankControllerComponent"
+			"Type" : "TankControllerComponent",
+			"FireRate" : 1.5,
+			"Speed" : 300
 		},
 		{
 			"Type" : "PlayerInputComponent",

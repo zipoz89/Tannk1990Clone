@@ -54,9 +54,6 @@
     <ClCompile Include="Sources\Game\Main.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Game\PlayerInputComponent.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="CollideeComponent.cpp">
       <Filter>Source Files\Game\Collision</Filter>
     </ClCompile>
@@ -88,7 +85,10 @@
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="EndScreen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\PlayerInputComponent.cpp">
+      <Filter>Source Files\Game\Tank</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,9 +109,6 @@
     </ClInclude>
     <ClInclude Include="Sources\Engine\TextureComponent.h">
       <Filter>Source Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Game\PlayerInputComponent.h">
-      <Filter>Source Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Engine\EngineUtils.h">
       <Filter>Source Files\Engine</Filter>
@@ -153,6 +150,12 @@
       <Filter>Source Files\Game\State</Filter>
     </ClInclude>
     <ClInclude Include="EndScreen.h">
+      <Filter>Source Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\PlayerInputComponent.h">
+      <Filter>Source Files\Game\Tank</Filter>
+    </ClInclude>
+    <ClInclude Include="Powerup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
