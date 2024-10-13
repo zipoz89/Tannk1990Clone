@@ -19,6 +19,18 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{25cb9537-8b2b-497b-80d9-0ead535a2f87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Collision">
+      <UniqueIdentifier>{11453402-d5f6-416e-8bcf-b55a60223910}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Pooling">
+      <UniqueIdentifier>{11cc2867-4f0a-420a-bf78-e5a8323f5bd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\State">
+      <UniqueIdentifier>{cc9a5499-4196-42a7-ab90-ec916f07b408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Tank">
+      <UniqueIdentifier>{8f8c1b8c-924c-4804-95bf-4fed155ecdd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Engine\Engine.cpp">
@@ -45,23 +57,29 @@
     <ClCompile Include="Sources\Game\PlayerInputComponent.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="ColliderComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CollideeComponent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="ProjectileComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PoolManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Source Files\Game\Collision</Filter>
     </ClCompile>
     <ClCompile Include="PoolableComponent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Pooling</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolManager.cpp">
+      <Filter>Source Files\Game\Pooling</Filter>
     </ClCompile>
     <ClCompile Include="TankControllerComponent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Tank</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileComponent.cpp">
+      <Filter>Source Files\Game\Tank</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayingState.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="DestroyableComponent.cpp">
+      <Filter>Source Files\Game\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,29 +107,35 @@
     <ClInclude Include="Sources\Engine\EngineUtils.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="ColliderComponent.h">
+    <ClInclude Include="Float2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CollideeComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Game\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectileComponent.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Source Files\Game\Collision</Filter>
     </ClInclude>
     <ClInclude Include="DestroyableComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Game\Collision</Filter>
     </ClInclude>
     <ClInclude Include="PoolManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Game\Pooling</Filter>
     </ClInclude>
     <ClInclude Include="PoolableComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Game\Pooling</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>Source Files\Game\State</Filter>
     </ClInclude>
     <ClInclude Include="TankControllerComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Game\Tank</Filter>
     </ClInclude>
-    <ClInclude Include="Float2.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ProjectileComponent.h">
+      <Filter>Source Files\Game\Tank</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayingState.h">
+      <Filter>Source Files\Game\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

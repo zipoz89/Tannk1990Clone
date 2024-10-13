@@ -5,7 +5,7 @@
 #include "Engine.h"
 #include "Scene.h"
 
-PoolManager::PoolManager(const char* object_template, int initial_size)
+PoolManager::PoolManager(const char* object_template, int initial_size, int textureWidth = 10, int textureHeight = 10)
 {
     m_PoolTemplate = object_template;
 

@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="CollideeComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="DestroyableComponent.cpp" />
+    <ClCompile Include="PlayingState.cpp" />
     <ClCompile Include="PoolableComponent.cpp" />
     <ClCompile Include="PoolManager.cpp" />
     <ClCompile Include="ProjectileComponent.cpp" />
@@ -39,6 +41,8 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="DestroyableComponent.h" />
     <ClInclude Include="Float2.h" />
+    <ClInclude Include="IState.h" />
+    <ClInclude Include="PlayingState.h" />
     <ClInclude Include="PoolableComponent.h" />
     <ClInclude Include="PoolManager.h" />
     <ClInclude Include="ProjectileComponent.h" />

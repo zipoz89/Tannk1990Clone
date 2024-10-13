@@ -8,4 +8,6 @@ public:
     DestroyableComponent() : EntityComponent(nullptr) {}
 
     virtual EntityComponent* Clone() const override { return new DestroyableComponent(*this); }
+
+    void Destroy();
 };

@@ -20,6 +20,7 @@ public:
 	virtual EntityComponent* Clone() const override { return new TankControllerComponent(*this); }
 
 	virtual void Initialize() override;
+	virtual void UnInitialize() override;
 	void HandleMovement(float DeltaTime);
 	void HandleShooting(float DeltaTime);
 	virtual void Update(float DeltaTime) override;
@@ -32,5 +33,7 @@ private:
 	float m_FireRate;
 	float m_Speed;
 	float m_FireCooldown;
+
+	bool m_Destroyed;
 };
 

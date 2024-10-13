@@ -72,18 +72,35 @@ void ProjectileComponent::HandleCollision()
 
 		ColliderComponent* Collider = ColliderEntity->GetComponent<ColliderComponent>();
 		if (Collider && Collider->IsColliding(Rectangle)) {
-			if (ColliderEntity->GetComponent<DestroyableComponent>()) {
-				ColliderEntity->Destroy();  // Destroy the wall
+
+			DestroyableComponent* destroyableComponent = ColliderEntity->GetComponent<DestroyableComponent>();
+
+			if (destroyableComponent) {
+				destroyableComponent->Destroy();  // Destroy the wall
 				//std::cout << "Hit something destructable";
 			}
-			else
+			else if (ColliderEntity->GetComponent<TankControllerComponent>())
 			{
+
 				//std::cout << "Hit something indestructable";
 			}
 
 			Engine::Get()->GetActiveScene()->ReturnEntityToPool("Projectile", GetOwner()->GetComponent<PoolableComponent>());
 			break;
 		}
+	}
+
+	int MaxWidth = 0, MaxHeight = 0;
+	SDL_GetWindowSize(Engine::Get()->GetWindow(), &MaxWidth, &MaxHeight);
+
+
+	if (Rectangle.x + Rectangle.w > MaxWidth ||
+		Rectangle.x < 0 ||
+		Rectangle.y + Rectangle.h > MaxHeight ||
+		Rectangle.y < 0)
+	{
+		Engine::Get()->GetActiveScene()->ReturnEntityToPool("Projectile", GetOwner()->GetComponent<PoolableComponent>());
+
 	}
 }
 

@@ -13,6 +13,7 @@ class ProjectileComponent;
 TankControllerComponent::TankControllerComponent(Entity* Owner)
 	: ColliderComponent(Owner)
 	, m_TextureComponent(nullptr)
+	, m_Destroyed(false)
 {
 }
 
@@ -30,12 +31,19 @@ void TankControllerComponent::Initialize()
 	m_Speed = 300;
 }
 
+void TankControllerComponent::UnInitialize()
+{
+	
+}
+
 void TankControllerComponent::Update(float DeltaTime)
 {
 	HandleMovement(DeltaTime);
 	HandleShooting(DeltaTime);
 }
 
+
+//the movement is limited to one direction so
 void TankControllerComponent::HandleMovement(float DeltaTime)
 {
 	SDL_Rect& Rectangle = m_TextureComponent->GetRectangle();
@@ -85,8 +93,6 @@ void TankControllerComponent::HandleMovement(float DeltaTime)
 
 	m_TextureComponent->SetRotation(Angle);
 
-	int MaxWidth = 0, MaxHeight = 0;
-	SDL_GetWindowSize(Engine::Get()->GetWindow(), &MaxWidth, &MaxHeight);
 
 	std::vector<Entity*> Entities = Engine::Get()->GetActiveScene()->GetEntitiesWithComponent<ColliderComponent>();
 
@@ -101,6 +107,9 @@ void TankControllerComponent::HandleMovement(float DeltaTime)
 			Rectangle = OldPosition;
 		}
 	}
+
+	int MaxWidth = 0, MaxHeight = 0;
+	SDL_GetWindowSize(Engine::Get()->GetWindow(), &MaxWidth, &MaxHeight);
 
 
 	if (Rectangle.x + Rectangle.w > MaxWidth)

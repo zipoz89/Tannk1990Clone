@@ -191,7 +191,7 @@ void Scene::ReturnEntityToPool(const std::string& type, PoolableComponent* entit
 	}
 }
 
-void Scene::AddPool(const char* objectTemplate, int initialSize)
+void Scene::AddPool(const char* objectTemplate, int initialSize, int textureWidth, int textureHeight)
 {
-	m_PoolManagers[objectTemplate] = new PoolManager(objectTemplate, initialSize);
+	m_PoolManagers[objectTemplate] = new PoolManager(objectTemplate, initialSize, textureWidth, textureHeight);
 }

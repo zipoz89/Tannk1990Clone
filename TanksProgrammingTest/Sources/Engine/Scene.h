@@ -23,7 +23,7 @@ public:
 
 	PoolableComponent* GetEntityFromPool(const std::string& type);
 	void ReturnEntityToPool(const std::string& type, PoolableComponent* entity);
-	void AddPool(const char* objectTemplate, int initialSize);
+	void AddPool(const char* objectTemplate, int initialSize, int textureWidth, int textureHeight);
 
 	template<typename T>
     std::vector<Entity*> GetEntitiesWithComponent() {

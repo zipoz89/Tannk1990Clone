@@ -1,10 +1,13 @@
 #pragma once
 
+#include <memory>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_timer.h>
 #include <vector>
 #include <string>
+
+#include "IState.h"
 
 class Scene;
 class ResourceManager;
@@ -15,7 +18,7 @@ class Engine
 public:
 	static Engine* Get();
 
-	void Initialize();
+	void Initialize(std::unique_ptr<IState> initialGameState);
 	void MainLoop();
 	void Draw();
 	void ShutDown();
@@ -27,6 +30,9 @@ public:
 	void SetActiveScene(Scene* Scene) { m_ActiveScene = Scene; }
 	Scene* GetActiveScene() { return m_ActiveScene; }
 	void CreateActiveSceneFromTemplate(std::string Name);
+
+	void SetGameState(std::unique_ptr<IState> newState);
+	IState* GetGameState() const { return m_CurrentState.get(); }
 
 private:
 	Engine();
@@ -41,4 +47,6 @@ private:
 	float TimePerFramInSceonds;
 
 	std::vector<SDL_Event> m_Events;
+
+	std::unique_ptr<IState> m_CurrentState;
 };

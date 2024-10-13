@@ -21,7 +21,7 @@ Engine* Engine::Get()
 	return &s_Instance;
 }
 
-void Engine::Initialize()
+void Engine::Initialize(std::unique_ptr<IState>  initialGameState)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
@@ -40,10 +40,8 @@ void Engine::Initialize()
 	m_ResourceManager = new ResourceManager("Resources");
 	m_ResourceManager->LoadResources();
 
-	if (m_ActiveScene != nullptr)
-	{
-		m_ActiveScene->Initialize();
-	}
+	SetGameState(std::move(initialGameState));
+
 }
 
 void Engine::MainLoop()
@@ -72,10 +70,7 @@ void Engine::MainLoop()
 				}
 			}
 
-			if (m_ActiveScene != nullptr)
-			{
-				m_ActiveScene->Update(TimePerFramInSceonds);
-			}
+			m_CurrentState->Update(TimePerFramInSceonds);
 
 			LastTime += TimePerFrameInMs;
 		}
@@ -118,5 +113,20 @@ void Engine::CreateActiveSceneFromTemplate(std::string Name)
 		SceneFromTemplate->Initialize();
 
 		m_ActiveScene = SceneFromTemplate;
+	}
+}
+
+void Engine::SetGameState(std::unique_ptr <IState> newState)
+{
+	if (m_CurrentState)
+	{
+		m_CurrentState->Uninitialize();
+	}
+
+	m_CurrentState = std::move(newState);
+
+	if (m_CurrentState)
+	{
+		m_CurrentState->Initialize();
 	}
 }
