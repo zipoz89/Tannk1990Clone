@@ -7,8 +7,8 @@
 			"Texture" : "BlueTankFront.png",
 			"Width" : 30,
 			"Height" : 30,
-			"PositionX" : 600,
-			"PositionY" : 470
+			"PositionX" : 1400,
+			"PositionY" : 250
 		},
 		{
 			"Type" : "TankControllerComponent"

@@ -5,8 +5,8 @@
 		{
 			"Type" : "TextureComponent",
 			"Texture" : "BrickWall.png",
-			"Width" : 50,
-			"Height" : 50,
+			"Width" : 500,
+			"Height" : 500,
 			"PositionX" : 0,
 			"PositionY" : 0
 		},

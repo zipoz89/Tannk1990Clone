@@ -9,6 +9,6 @@ public:
     void Uninitialize() override;
 
 private:
-    float m_GameOverTime = 3;
+    float m_GameOverTime = 5;
 };
 

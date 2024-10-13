@@ -31,7 +31,7 @@ void Engine::Initialize(std::unique_ptr<IState>  initialGameState)
 	m_Window = SDL_CreateWindow("ProgrammingTest",
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		860, 640, 0);
+		1600, 900, 0);
 
 	Uint32 renderFlags = SDL_RENDERER_ACCELERATED;
 

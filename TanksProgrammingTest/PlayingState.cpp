@@ -23,6 +23,7 @@ void PlayingState::Initialize()
     {
         Engine::Get()->GetActiveScene()->Initialize();
     }
+
 }
 
 void PlayingState::Update(float DeltaTime)
@@ -30,6 +31,11 @@ void PlayingState::Update(float DeltaTime)
     if (Engine::Get()->GetActiveScene() != nullptr)
     {
         Engine::Get()->GetActiveScene()->Update(DeltaTime);
+    }
+
+    if(m_EndNextFrame)
+    {
+        Engine::Get()->SetGameState(std::make_unique<GameOverState>());
     }
 
     std::vector<Entity*> Entities = Engine::Get()->GetActiveScene()->GetEntitiesWithComponent<TankControllerComponent>();
@@ -41,7 +47,8 @@ void PlayingState::Update(float DeltaTime)
 
         if(tankComponent->IsKilled())
         {
-            Engine::Get()->SetGameState(std::make_unique<GameOverState>());
+            m_EndNextFrame = true;
+            break;
         }
     }
 }

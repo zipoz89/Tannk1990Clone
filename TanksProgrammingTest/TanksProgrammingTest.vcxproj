@@ -23,6 +23,7 @@
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="DestroyableComponent.cpp" />
     <ClCompile Include="EmptyState.cpp" />
+    <ClCompile Include="EndScreen.cpp" />
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="PlayingState.cpp" />
     <ClCompile Include="PoolableComponent.cpp" />
@@ -43,6 +44,7 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="DestroyableComponent.h" />
     <ClInclude Include="EmptyState.h" />
+    <ClInclude Include="EndScreen.h" />
     <ClInclude Include="Float2.h" />
     <ClInclude Include="GameOverState.h" />
     <ClInclude Include="IState.h" />

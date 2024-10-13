@@ -6,6 +6,7 @@
 #include "ColliderComponent.h"
 #include "DestroyableComponent.h"
 #include "EmptyState.h"
+#include "EndScreen.h"
 #include "PlayingState.h"
 #include "ProjectileComponent.h"
 #include "Scene.h"
@@ -24,6 +25,7 @@ int main(int argc, char* argv[])
 	ResourceManagerPtr->RegisterComponent("ProjectileComponent", new ProjectileComponent());
 	ResourceManagerPtr->RegisterComponent("DestroyableComponent", new DestroyableComponent());
 	ResourceManagerPtr->RegisterComponent("PoolableComponent", new PoolableComponent());
+	ResourceManagerPtr->RegisterComponent("EndScreen", new EndScreen());
 
 	Engine::Get()->SetGameState(std::make_unique<PlayingState>());
 

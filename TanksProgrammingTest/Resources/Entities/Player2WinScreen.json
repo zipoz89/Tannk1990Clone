@@ -9,6 +9,9 @@
 			"Height" : 256,
 			"PositionX" : 0,
 			"PositionY" : 0
+		},
+		{
+			"Type" : "EndScreen"
 		}
 	]
 }

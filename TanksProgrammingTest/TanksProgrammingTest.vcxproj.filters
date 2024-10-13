@@ -87,6 +87,9 @@
     <ClCompile Include="EmptyState.cpp">
       <Filter>Source Files\Game\State</Filter>
     </ClCompile>
+    <ClCompile Include="EndScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Engine\Engine.h">
@@ -148,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="EmptyState.h">
       <Filter>Source Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="EndScreen.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
