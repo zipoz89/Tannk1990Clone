@@ -13,7 +13,7 @@ class ProjectileComponent;
 TankControllerComponent::TankControllerComponent(Entity* Owner)
 	: ColliderComponent(Owner)
 	, m_TextureComponent(nullptr)
-	, m_Destroyed(false)
+	, m_Killed(false)
 {
 }
 
@@ -31,15 +31,17 @@ void TankControllerComponent::Initialize()
 	m_Speed = 300;
 }
 
-void TankControllerComponent::UnInitialize()
-{
-	
-}
 
 void TankControllerComponent::Update(float DeltaTime)
 {
+	if(m_Killed)
+	{
+		return;
+	}
+
 	HandleMovement(DeltaTime);
 	HandleShooting(DeltaTime);
+	UpdatePosition();
 }
 
 
@@ -188,4 +190,10 @@ void TankControllerComponent::Shoot()
 
 	projComp->SetSpeed(600.0f);
 
+}
+
+void TankControllerComponent::Kill()
+{
+	m_Killed = true;
+	m_TextureComponent->SetVisible(false);
 }

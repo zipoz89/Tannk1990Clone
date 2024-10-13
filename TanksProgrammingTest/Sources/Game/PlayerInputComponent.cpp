@@ -33,15 +33,22 @@ void PlayerInputComponent::LoadFromConfig(nlohmann::json Config)
 
 
 
-void addToListIfNotExists(std::list<Direction>& myList, Direction value) {
-	if (std::find(myList.begin(), myList.end(), value) == myList.end()) {
+void addToListIfNotExists(std::list<Direction>& myList, Direction value)
+{
+	if ((std::find(myList.begin(), myList.end(), value) == myList.end())) 
+	{
 		myList.push_front(value);
 	}
 }
 
-void removeFromList(std::list<Direction>& myList, Direction value) {
+void removeFromList(std::list<Direction>& myList, Direction value)
+{
 	auto it = std::find(myList.begin(), myList.end(), value);
-	myList.erase(it);
+	if (it != myList.end()) 
+	{
+		myList.erase(it);
+	}
+
 }
 
 
@@ -101,28 +108,29 @@ void PlayerInputComponent::Update(float DeltaTime)
 			}
 		}
 
-		if(m_DirectionInputBuffer.empty())
-		{
-			directionInput = Float2(0, 0);
-		}
-		else
-		{
-			switch (*m_DirectionInputBuffer.begin())
-			{
-			case UP:
-				directionInput = Float2(0, 1);
-				break;
-			case DOWN:
-				directionInput = Float2(0, -1);
-				break;
-			case LEFT:
-				directionInput = Float2(1, 0);
-				break;
-			case RIGHT:
-				directionInput = Float2(-1, 0);
-				break;
-			}
-		}
+	}
 
+	if (m_DirectionInputBuffer.empty())
+	{
+		directionInput = Float2(0, 0);
+	}
+	else
+	{
+		switch (*m_DirectionInputBuffer.begin())
+		{
+		case UP:
+			directionInput = Float2(0, 1);
+			break;
+		case DOWN:
+			directionInput = Float2(0, -1);
+			break;
+		case LEFT:
+			directionInput = Float2(1, 0);
+			break;
+		case RIGHT:
+			directionInput = Float2(-1, 0);
+			break;
+		}
 	}
 }
+

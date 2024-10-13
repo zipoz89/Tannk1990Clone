@@ -81,6 +81,12 @@
     <ClCompile Include="DestroyableComponent.cpp">
       <Filter>Source Files\Game\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptyState.cpp">
+      <Filter>Source Files\Game\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Engine\Engine.h">
@@ -135,6 +141,12 @@
       <Filter>Source Files\Game\Tank</Filter>
     </ClInclude>
     <ClInclude Include="PlayingState.h">
+      <Filter>Source Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverState.h">
+      <Filter>Source Files\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyState.h">
       <Filter>Source Files\Game\State</Filter>
     </ClInclude>
   </ItemGroup>

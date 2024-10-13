@@ -71,18 +71,19 @@ void ProjectileComponent::HandleCollision()
 			continue;
 
 		ColliderComponent* Collider = ColliderEntity->GetComponent<ColliderComponent>();
-		if (Collider && Collider->IsColliding(Rectangle)) {
 
-			DestroyableComponent* destroyableComponent = ColliderEntity->GetComponent<DestroyableComponent>();
 
-			if (destroyableComponent) {
-				destroyableComponent->Destroy();  // Destroy the wall
-				//std::cout << "Hit something destructable";
+		if (Collider && Collider->IsColliding(Rectangle)) 
+		{
+
+			if (DestroyableComponent* destroyableComponent = ColliderEntity->GetComponent<DestroyableComponent>()) {
+				destroyableComponent->Destroy();
+				
 			}
-			else if (ColliderEntity->GetComponent<TankControllerComponent>())
-			{
 
-				//std::cout << "Hit something indestructable";
+			if (TankControllerComponent* tankControllerComponent = ColliderEntity->GetComponent<TankControllerComponent>())
+			{
+				tankControllerComponent->Kill();
 			}
 
 			Engine::Get()->GetActiveScene()->ReturnEntityToPool("Projectile", GetOwner()->GetComponent<PoolableComponent>());

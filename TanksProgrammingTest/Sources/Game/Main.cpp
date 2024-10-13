@@ -5,6 +5,7 @@
 #include "PlayerInputComponent.h"
 #include "ColliderComponent.h"
 #include "DestroyableComponent.h"
+#include "EmptyState.h"
 #include "PlayingState.h"
 #include "ProjectileComponent.h"
 #include "Scene.h"
@@ -12,7 +13,7 @@
 
 int main(int argc, char* argv[])
 {
-	Engine::Get()->Initialize(std::make_unique<PlayingState>());
+	Engine::Get()->Initialize(std::make_unique<EmptyState>());
 
 	ResourceManager* ResourceManagerPtr = Engine::Get()->GetResourceManager();
 	ResourceManagerPtr->RegisterComponent("PlayerInputComponent", new PlayerInputComponent());
@@ -24,8 +25,7 @@ int main(int argc, char* argv[])
 	ResourceManagerPtr->RegisterComponent("DestroyableComponent", new DestroyableComponent());
 	ResourceManagerPtr->RegisterComponent("PoolableComponent", new PoolableComponent());
 
-	Engine::Get()->CreateActiveSceneFromTemplate("MainScene");
-	Engine::Get()->GetActiveScene()->AddPool("Projectile", 10, 10, 10);
+	Engine::Get()->SetGameState(std::make_unique<PlayingState>());
 
 	Engine::Get()->MainLoop();
 	Engine::Get()->ShutDown();

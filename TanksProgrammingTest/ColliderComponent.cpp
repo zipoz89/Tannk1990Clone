@@ -37,18 +37,15 @@ void ColliderComponent::SetColliderSize(int Width, int Height)
 bool ColliderComponent::IsColliding(const SDL_Rect& OtherRect)
 {
     //std::cout << "Checking collison";
-
+    //UpdatePosition();
     return SDL_HasIntersection(&m_Collider, &OtherRect);
 }
 
-void ColliderComponent::UpdatePoition()
+void ColliderComponent::UpdatePosition()
 {
     TextureComponent* textureComponent = GetOwner()->GetComponent<TextureComponent>();
     if (textureComponent)
     {
-        // Update collider position based on the entity's texture position
-        SDL_Rect& entityRect = textureComponent->GetRectangle();
-        m_Collider.x = entityRect.x;
-        m_Collider.y = entityRect.y;
+        m_Collider = textureComponent->GetRectangle();
     }
 }

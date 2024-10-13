@@ -17,7 +17,7 @@ CollideeComponent::CollideeComponent()
 
 void CollideeComponent::Update(float DeltaTime)
 {
-    UpdatePoition();
+    UpdatePosition();
 
     // Get all entities with ColliderComponents (including other CollideeComponents)
     std::vector<Entity*> Entities = Engine::Get()->GetActiveScene()->GetEntitiesWithComponent<ColliderComponent>();

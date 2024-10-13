@@ -18,6 +18,7 @@ public:
 	void AddComponent(EntityComponent* Component);
 	void RemoveComponent(EntityComponent* Component);
 	void Destroy();
+	std::string GetName() { return m_Name;}
 
 	template <typename ComponentType>
 	ComponentType* GetComponent()

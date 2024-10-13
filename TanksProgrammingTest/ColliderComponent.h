@@ -19,6 +19,6 @@ public:
 	SDL_Rect& GetCollider() { return m_Collider; }
 
 protected:
-	void UpdatePoition();
+	void UpdatePosition();
 	SDL_Rect m_Collider;  // Collision bounds
 };

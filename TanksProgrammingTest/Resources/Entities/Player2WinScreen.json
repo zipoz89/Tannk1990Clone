@@ -1,0 +1,14 @@
+{
+	"Name" : "Wall",
+	"Components" : 
+	[
+		{
+			"Type" : "TextureComponent",
+			"Texture" : "Player2Wins.png",
+			"Width" : 1024,
+			"Height" : 256,
+			"PositionX" : 0,
+			"PositionY" : 0
+		}
+	]
+}
